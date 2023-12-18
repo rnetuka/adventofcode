@@ -35,6 +35,9 @@ class Interval:
     def __hash__(self):
         return hash((self.start, self.end))
 
+    def __len__(self):
+        return self.end - self.start + 1
+
     def __lt__(self, other):
         if self == other:
             return False
