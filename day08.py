@@ -81,7 +81,7 @@
 
 import math
 from collections import namedtuple
-from lib.cycling_queue import CyclingQueue
+from lib.circular_buffer import CircularBuffer
 
 Node = namedtuple('Node', ['left', 'right'])
 
@@ -100,17 +100,18 @@ instructions = ''
 
 
 def navigate(start, finish_check):
-    queue = CyclingQueue(list(instructions))
+    queue = CircularBuffer(list(instructions))
     node = start
     steps = 0
 
-    while not finish_check(node):
-        instruction = queue.pop()
+    for instruction in queue:
         if instruction == 'L':
             node = nodes[node].left
         elif instruction == 'R':
             node = nodes[node].right
         steps += 1
+        if finish_check(node):
+            break
     return steps
 
 
