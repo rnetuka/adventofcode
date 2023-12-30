@@ -13,7 +13,7 @@ class Matrix:
 
     @staticmethod
     def parse(string):
-        lines = [line.rstrip() for line in string if line]
+        lines = [line for line in string.split('\n') if line]
         rows = len(lines)
         columns = len(lines[0])
         matrix = Matrix(rows, columns)
@@ -25,10 +25,18 @@ class Matrix:
     @staticmethod
     def from_file(path):
         with open(path) as file:
-            return Matrix.parse(file.readlines())
+            return Matrix.parse(file.read())
+
+    @property
+    def rows(self):
+        return [self.row(i) for i in range(self.height)]
 
     def row(self, i):
         return Row(self.elements[i])
+
+    @property
+    def columns(self):
+        return [self.column(j) for j in range(self.width)]
 
     def column(self, j):
         return Column(self, j)
@@ -37,6 +45,21 @@ class Matrix:
         if i < 0 or i >= self.height or j < 0 or j >= self.width:
             return None
         return self.elements[i][j]
+
+    def insert_row(self, i, elements):
+        if len(elements) != self.width:
+            raise Exception('Row must have the same width as the matrix')
+
+        self.elements.insert(i, list(elements))
+        self.height += 1
+
+    def insert_column(self, j, elements):
+        if len(elements) != self.height:
+            raise Exception('Column must have the same height as the matrix')
+
+        for i in range(self.height):
+            self.elements[i].insert(j, elements[i])
+        self.width += 1
 
     @property
     def coordinates(self):
