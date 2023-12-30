@@ -4,6 +4,13 @@ class Column:
         self.matrix = matrix
         self.j = j
 
+    @property
+    def elements(self):
+        elements = []
+        for i in range(self.matrix.height):
+            elements.append(self.matrix[i][self.j])
+        return elements
+
     def __getitem__(self, i):
         return self.matrix[i][self.j]
 
