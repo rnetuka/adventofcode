@@ -88,6 +88,7 @@ def solution_2():
 
 
 if __name__ == '__main__':
+    print('--- Day 13: Point of Incidence ---')
     print('Part 1: ', end='')
     print(solution_1())
     print('Part 2: ', end='')
