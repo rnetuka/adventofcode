@@ -23,3 +23,9 @@ class Column:
             repr += str(self.matrix[i][self.j])
             repr += '\n'
         return repr
+
+    def __len__(self):
+        return len(self.elements)
+
+    def __eq__(self, other):
+        return self.elements == other.elements

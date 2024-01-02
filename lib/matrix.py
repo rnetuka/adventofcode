@@ -32,6 +32,8 @@ class Matrix:
         return [self.row(i) for i in range(self.height)]
 
     def row(self, i):
+        if i < 0 or i >= self.height:
+            return None
         return Row(self.elements[i])
 
     @property
