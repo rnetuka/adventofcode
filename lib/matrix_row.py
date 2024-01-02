@@ -11,3 +11,9 @@ class Row:
 
     def __repr__(self):
         return ''.join(self.elements)
+
+    def __len__(self):
+        return len(self.elements)
+
+    def __eq__(self, other):
+        return self.elements == other.elements
