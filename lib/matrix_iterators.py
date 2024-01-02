@@ -30,7 +30,7 @@ class CoordinatesIterator:
         if self.j >= self.matrix.width:
             self.i += 1
             self.j = 0
-        if self.i >= self.matrix.height:
+        if result_i >= self.matrix.height:
             raise StopIteration
         return result_i, result_j
 
