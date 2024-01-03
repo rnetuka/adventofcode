@@ -54,7 +54,7 @@ def total_load(matrix):
 
 
 def read_input():
-    return Matrix.from_file('input/day14.txt')
+    return Matrix.from_file('input/day15.txt')
 
 
 def solution_1():
