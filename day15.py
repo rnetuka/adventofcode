@@ -38,7 +38,7 @@ def hash(string):
 
 
 def solution_1():
-    with open('input/day14.txt') as file:
+    with open('input/day15.txt') as file:
         string = file.read().strip()
         n = 0
         for step in string.split(','):
@@ -47,7 +47,7 @@ def solution_1():
 
 
 def solution_2():
-    with open('input/day14.txt') as file:
+    with open('input/day15.txt') as file:
         string = file.read().strip()
     light = Light()
     for step in string.split(','):
