@@ -6,10 +6,10 @@ from .matrix_iterators import CoordinatesIterable
 
 class Matrix:
 
-    def __init__(self, rows, columns):
+    def __init__(self, rows, columns, default=0):
         self.width = columns
         self.height = rows
-        self.elements = [[0] * self.width for _ in range(self.height)]
+        self.elements = [[default] * self.width for _ in range(self.height)]
 
     @staticmethod
     def parse(string):
@@ -74,6 +74,6 @@ class Matrix:
     def __repr__(self):
         repr = ''
         for row in range(self.height):
-            repr += ''.join(self[row])
+            repr += ''.join(str(self[row]))
             repr += '\n'
         return repr

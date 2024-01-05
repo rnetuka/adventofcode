@@ -10,4 +10,10 @@ class Row:
         return self.elements[j]
 
     def __repr__(self):
-        return ''.join(self.elements)
+        return ''.join(str(e) for e in self.elements)
+
+    def __len__(self):
+        return len(self.elements)
+
+    def __eq__(self, other):
+        return self.elements == other.elements
