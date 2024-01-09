@@ -8,10 +8,16 @@ class Interval:
     def empty():
         return Interval(None, None)
 
+    @staticmethod
+    def infinite():
+        return Interval(float('-inf'), float('inf'))
+
     def is_empty(self):
         return self.start is None and self.end is None
 
     def intersect(self, other):
+        if self.is_empty() or other.is_empty():
+            return Interval.empty()
         if other.end < self.start or other.start > self.end:
             return Interval.empty()
         i = max(self.start, other.start)
@@ -19,7 +25,9 @@ class Interval:
         return Interval(i, j)
 
     def __repr__(self):
-        return '<' + self.start + ', ' + self.end + '>'
+        if self.is_empty():
+            return '()'
+        return '<' + str(self.start) + ', ' + str(self.end) + '>'
 
     def __bool__(self):
         return not self.is_empty()
