@@ -1,3 +1,5 @@
+from .interval_iterator import IntervalIterator
+
 class Interval:
 
     def __init__(self, start, end):
@@ -53,3 +55,6 @@ class Interval:
             return True
         else:
             return self.end < other.end
+
+    def __iter__(self):
+        return IntervalIterator(self)
