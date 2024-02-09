@@ -43,9 +43,13 @@ class Matrix:
     def column(self, j):
         return Column(self, j)
 
-    def peek(self, i, j):
+    def peek(self, i, j=None):
+        if isinstance(i, tuple) and len(i) == 2:
+            i, j = i[0], i[1]
+
         if i < 0 or i >= self.height or j < 0 or j >= self.width:
             return None
+
         return self.elements[i][j]
 
     def insert_row(self, i, elements):
@@ -68,6 +72,9 @@ class Matrix:
         return CoordinatesIterable(self)
 
     def __getitem__(self, i):
+        if isinstance(i, tuple) and len(i) == 2:
+            i, j = i[0], i[1]
+            return self.elements[i][j]
         return Row(self.elements[i])
 
     def __iter__(self):

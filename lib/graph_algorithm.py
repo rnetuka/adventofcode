@@ -27,3 +27,6 @@ class DijkstrasAlgorithm:
                         previous[neighbor] = node
 
         return distances
+
+    def shortest_path(self, start, finish):
+        return self.distances_from(start)[finish]
