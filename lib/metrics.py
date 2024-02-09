@@ -15,4 +15,8 @@ class Point:
 
 
 def manhattan_distance(a, b):
-    return abs(a.x - b.x) + abs(a.y - b.y)
+    if isinstance(a, Point) and isinstance(b, Point):
+        return abs(a.x - b.x) + abs(a.y - b.y)
+
+    if isinstance(a, tuple) and len(a) == 2 and isinstance(b, tuple) and len(b) == 2:
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])
