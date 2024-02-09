@@ -3,6 +3,14 @@ class CircularBuffer:
     def __init__(self, elements):
         self.elements = list(elements)
 
+    def index(self, element):
+        return self.elements.index(element)
+
+    def __getitem__(self, i):
+        if i >= len(self.elements):
+            i %= len(self.elements)
+        return self.elements[i]
+
     def __iter__(self):
         return CircularBufferIterator(self)
 
